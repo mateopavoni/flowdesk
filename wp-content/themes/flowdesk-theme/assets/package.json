@@ -1,0 +1,13 @@
+{
+  "name": "flowdesk-theme-assets",
+  "version": "1.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "tailwindcss -i src/input.css -o dist/main.css --minify",
+    "watch": "tailwindcss -i src/input.css -o dist/main.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}

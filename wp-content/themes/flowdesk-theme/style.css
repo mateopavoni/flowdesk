@@ -1,0 +1,16 @@
+/*
+Theme Name: FlowDesk
+Theme URI: https://flowdesk.example.com
+Author: Mateo Pavoni
+Author URI: https://github.com/
+Description: Tema custom de landing + blog para FlowDesk, un SaaS de productividad. Tailwind CSS, sin builder de páginas, sin ACF.
+Version: 1.0.0
+Requires at least: 6.0
+Requires PHP: 8.1
+License: All Rights Reserved
+Text Domain: flowdesk
+*/
+
+/* El CSS real (Tailwind compilado) se enqueuea desde functions.php como
+   assets/dist/main.css. Este archivo solo existe porque WordPress exige
+   un style.css con el header de arriba para reconocer el tema. */
