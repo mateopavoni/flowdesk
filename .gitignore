@@ -1,0 +1,25 @@
+# Meta de fábrica (no se publica — ver modules/portfolio-pack.md §0)
+.claude/
+PORTFOLIO.md
+TASKS.md
+MANUAL-PRUEBAS.md
+commit-plan.md
+commit-plan.sh
+
+# Node / build
+node_modules/
+wp-content/themes/flowdesk-theme/assets/dist/
+tests/e2e/test-results/
+tests/e2e/playwright-report/
+
+# WordPress
+wp-config.php
+wp-content/uploads/
+*.log
+*.sql
+
+# Env / secrets
+.env
+
+# OS
+.DS_Store
