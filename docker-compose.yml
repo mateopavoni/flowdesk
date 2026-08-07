@@ -1,0 +1,72 @@
+services:
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-changeme_root}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-flowdesk}
+      MYSQL_USER: ${MYSQL_USER:-flowdesk}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-changeme_db}
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD:-changeme_root}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  wordpress:
+    image: wordpress:php8.3-apache
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE:-flowdesk}
+      WORDPRESS_DB_USER: ${MYSQL_USER:-flowdesk}
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD:-changeme_db}
+      WORDPRESS_TABLE_PREFIX: ${WORDPRESS_TABLE_PREFIX:-fd_}
+      WORDPRESS_DEBUG: 1
+    volumes:
+      - wp_data:/var/www/html
+      - ./wp-content/themes/flowdesk-theme:/var/www/html/wp-content/themes/flowdesk-theme
+      - ./wp-content/plugins/flowdesk-toolkit:/var/www/html/wp-content/plugins/flowdesk-toolkit
+      - ./data:/var/www/html/fd-data
+      - ./dev/mu-plugins:/var/www/html/wp-content/mu-plugins
+
+  # Atrapa los mails de dev (contacto, notificación de newsletter) para
+  # poder verlos sin un MTA real — el contenedor de wordpress no trae uno.
+  # Solo para desarrollo local; en el hosting real el mail sale por la
+  # configuración SMTP/mail() del propio hosting.
+  mailpit:
+    image: axllent/mailpit
+    restart: unless-stopped
+    ports:
+      - "8025:8025" # UI para ver los mails: http://localhost:8025
+
+  wpcli:
+    image: wordpress:cli-php8.3
+    depends_on:
+      - wordpress
+    user: "33:33"
+    volumes:
+      - wp_data:/var/www/html
+      - ./wp-content/themes/flowdesk-theme:/var/www/html/wp-content/themes/flowdesk-theme
+      - ./wp-content/plugins/flowdesk-toolkit:/var/www/html/wp-content/plugins/flowdesk-toolkit
+      - ./data:/var/www/html/fd-data
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE:-flowdesk}
+      WORDPRESS_DB_USER: ${MYSQL_USER:-flowdesk}
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD:-changeme_db}
+      # Tiene que matchear el de arriba: wp-config.php resuelve el prefijo por
+      # env de cada contenedor (getenv_docker), no queda fijo en el archivo.
+      WORDPRESS_TABLE_PREFIX: ${WORDPRESS_TABLE_PREFIX:-fd_}
+    entrypoint: ["tail", "-f", "/dev/null"] # queda vivo para correr `docker compose exec wpcli wp ...`
+
+volumes:
+  db_data:
+  wp_data:
