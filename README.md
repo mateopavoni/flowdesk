@@ -4,9 +4,16 @@ Sitio de marketing (landing + blog) para **FlowDesk**, un SaaS de productividad 
 con tema y plugin 100% custom — sin builder tipo Elementor, sin ACF — para demostrar desarrollo WP
 "real": CPTs, REST endpoint propio, shortcode, widget, hardening de seguridad y SEO on-page a mano.
 
+[![demo](https://img.shields.io/badge/demo-live-brightgreen)](https://flowdesk.146-181-35-182.sslip.io/)
 ![stack](https://img.shields.io/badge/stack-WordPress%20%C2%B7%20PHP%208.3%20%C2%B7%20MySQL%208%20%C2%B7%20Tailwind-2b2b2b)
 ![tests](https://img.shields.io/badge/e2e-10%2F10%20verde-brightgreen)
 ![license](https://img.shields.io/badge/license-proprietary-red)
+
+**Demo en vivo**: [flowdesk.146-181-35-182.sslip.io](https://flowdesk.146-181-35-182.sslip.io/)
+(Dokku + Let's Encrypt, ver "Deploy a hosting real" abajo).
+
+![Home](docs/screenshots/home.png)
+![Blog](docs/screenshots/blog.png)
 
 ## Qué tiene
 
