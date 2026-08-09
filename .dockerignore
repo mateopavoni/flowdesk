@@ -1,0 +1,8 @@
+.git
+tests/e2e/node_modules
+tests/e2e/test-results
+dev
+docker-compose.yml
+.env
+.env.example
+*.md
