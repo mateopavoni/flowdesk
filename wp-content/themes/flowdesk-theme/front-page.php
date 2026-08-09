@@ -12,15 +12,17 @@ get_header();
 
 <section id="pricing" class="container-fd py-20">
 	<div class="text-center max-w-2xl mx-auto mb-14">
-		<h2 class="text-3xl"><?php esc_html_e( 'Precios simples, sin letra chica', 'flowdesk' ); ?></h2>
+		<p class="fd-nameplate mx-auto"><?php esc_html_e( 'Module requisition', 'flowdesk' ); ?></p>
+		<h2 class="mt-4 text-2xl sm:text-3xl"><?php esc_html_e( 'Precios simples, sin letra chica', 'flowdesk' ); ?></h2>
 	</div>
 	<?php echo do_shortcode( '[flowdesk_pricing]' ); ?>
 </section>
 
-<section id="testimonios" class="bg-slate-50 py-20">
+<section id="testimonios" class="bg-slate-50 py-20 border-y border-metal">
 	<div class="container-fd">
 		<div class="text-center max-w-2xl mx-auto mb-14">
-			<h2 class="text-3xl"><?php esc_html_e( 'Lo que dicen los equipos que ya lo usan', 'flowdesk' ); ?></h2>
+			<p class="fd-nameplate mx-auto"><?php esc_html_e( 'Incoming transmissions', 'flowdesk' ); ?></p>
+			<h2 class="mt-4 text-2xl sm:text-3xl"><?php esc_html_e( 'Lo que dicen los equipos que ya lo usan', 'flowdesk' ); ?></h2>
 		</div>
 		<?php the_widget( 'Flowdesk_Testimonials_Widget', array( 'count' => 5 ) ); ?>
 	</div>
