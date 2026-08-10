@@ -7,8 +7,9 @@ get_header();
 ?>
 <div class="container-fd py-16">
 	<div class="text-center max-w-2xl mx-auto mb-10">
-		<h1 class="text-4xl"><?php esc_html_e( 'Blog', 'flowdesk' ); ?></h1>
-		<p class="mt-3 text-slate-600">
+		<p class="fd-nameplate mx-auto"><?php esc_html_e( 'Sys log tape', 'flowdesk' ); ?></p>
+		<h1 class="mt-4 text-3xl sm:text-4xl"><?php esc_html_e( 'Blog', 'flowdesk' ); ?></h1>
+		<p class="mt-3 font-sans text-sm text-slate-600">
 			<?php esc_html_e( 'Productividad, gestión de equipos y notas sobre cómo construimos FlowDesk.', 'flowdesk' ); ?>
 		</p>
 	</div>
@@ -21,8 +22,8 @@ get_header();
 				type="search"
 				id="fd-blog-search"
 				name="s"
-				placeholder="<?php esc_attr_e( 'Buscar…', 'flowdesk' ); ?>"
-				class="rounded-lg border border-slate-300 px-3 py-2 text-sm"
+				placeholder="<?php esc_attr_e( 'Query…', 'flowdesk' ); ?>"
+				class="bg-panel border border-metal px-3 py-2 text-sm font-sans text-slate-800 placeholder:text-slate-500"
 			/>
 		</form>
 	</div>

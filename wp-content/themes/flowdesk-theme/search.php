@@ -5,12 +5,13 @@
 get_header();
 ?>
 <div class="container-fd py-16">
-	<h1 class="text-3xl mb-10">
+	<p class="fd-nameplate"><?php esc_html_e( 'Query result', 'flowdesk' ); ?></p>
+	<h1 class="mt-4 text-2xl sm:text-3xl mb-10">
 		<?php
 		printf(
 			/* translators: %s: término buscado */
 			esc_html__( 'Resultados para "%s"', 'flowdesk' ),
-			'<span class="text-blue-800">' . esc_html( get_search_query() ) . '</span>'
+			'<span class="text-amber">' . esc_html( get_search_query() ) . '</span>'
 		);
 		?>
 	</h1>
