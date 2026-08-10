@@ -61,31 +61,48 @@ class Flowdesk_Shortcode_Pricing {
 		return apply_filters( 'flowdesk_pricing_plans', $plans );
 	}
 
+	/**
+	 * Presentadas como placas de especificaciones de equipo (nameplate +
+	 * filas de spec), no el típico "card destacada con checkmarks" de
+	 * pricing table SaaS. El plan recomendado se marca con una etiqueta,
+	 * no recoloreando toda la card.
+	 */
 	public function render() {
 		ob_start();
+		$mod_ids = array( 'MOD-ALFA', 'MOD-BRAVO', 'MOD-CHARLIE' );
 		?>
-		<div class="grid gap-8 md:grid-cols-3 items-start">
-			<?php foreach ( $this->plans() as $plan ) : ?>
-				<div class="rounded-2xl p-8 <?php echo $plan['highlight'] ? 'bg-blue-900 text-white shadow-xl md:-translate-y-2' : 'border border-slate-100'; ?>">
-					<p class="font-heading font-semibold text-lg"><?php echo esc_html( $plan['name'] ); ?></p>
-					<p class="mt-4">
-						<span class="text-4xl font-heading font-bold">$<?php echo esc_html( $plan['price'] ); ?></span>
-						<span class="text-sm <?php echo $plan['highlight'] ? 'text-blue-200' : 'text-slate-500'; ?>"><?php echo esc_html( $plan['period'] ); ?></span>
-					</p>
-					<ul class="mt-6 space-y-3 text-sm">
-						<?php foreach ( $plan['features'] as $feature ) : ?>
-							<li class="flex items-center gap-2">
-								<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="shrink-0" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-								<?php echo esc_html( $feature ); ?>
-							</li>
-						<?php endforeach; ?>
-					</ul>
-					<a
-						href="#contacto"
-						class="btn mt-8 w-full <?php echo $plan['highlight'] ? 'bg-white text-blue-900 hover:bg-blue-50' : 'bg-blue-900 text-white hover:bg-blue-800'; ?>"
-					>
-						<?php echo esc_html( $plan['cta'] ); ?>
-					</a>
+		<div class="grid gap-6 md:grid-cols-3 items-start font-sans">
+			<?php foreach ( $this->plans() as $i => $plan ) : ?>
+				<div class="fd-panel <?php echo $plan['highlight'] ? 'border-amber' : ''; ?>">
+					<?php if ( $plan['highlight'] ) : ?>
+						<div class="fd-hazard-edge"></div>
+					<?php endif; ?>
+					<div class="p-6 sm:p-8">
+						<div class="flex items-center justify-between">
+							<p class="fd-nameplate"><?php echo esc_html( $mod_ids[ $i ] ?? 'MOD' ); ?> // <?php echo esc_html( strtoupper( $plan['name'] ) ); ?></p>
+							<?php if ( $plan['highlight'] ) : ?>
+								<span class="flex items-center gap-1 font-sans text-[10px] text-amber uppercase tracking-widest"><span class="fd-led is-on"></span>Active</span>
+							<?php endif; ?>
+						</div>
+						<p class="mt-5">
+							<span class="text-3xl sm:text-4xl font-heading text-slate-900">$<?php echo esc_html( $plan['price'] ); ?></span>
+							<span class="text-xs text-slate-500"><?php echo esc_html( $plan['period'] ); ?></span>
+						</p>
+						<ul class="mt-6 space-y-3 text-sm border-t border-metal pt-6">
+							<?php foreach ( $plan['features'] as $feature ) : ?>
+								<li class="flex items-center gap-2.5">
+									<span class="w-2 h-2 shrink-0 <?php echo $plan['highlight'] ? 'bg-amber' : 'bg-slate-500'; ?>" aria-hidden="true"></span>
+									<?php echo esc_html( $feature ); ?>
+								</li>
+							<?php endforeach; ?>
+						</ul>
+						<a
+							href="#contacto"
+							class="btn mt-8 w-full <?php echo $plan['highlight'] ? 'bg-amber text-anthracite hover:bg-hazard' : 'bg-metal text-slate-800 hover:bg-slate-100/10 border border-slate-300'; ?>"
+						>
+							<?php echo esc_html( $plan['cta'] ); ?>
+						</a>
+					</div>
 				</div>
 			<?php endforeach; ?>
 		</div>
