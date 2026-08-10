@@ -23,18 +23,17 @@ $faqs = array(
 ?>
 <section id="faq" class="container-fd py-20 max-w-3xl">
 	<div class="text-center">
-		<p class="fd-nameplate mx-auto"><?php esc_html_e( 'Diagnostics log', 'flowdesk' ); ?></p>
+		<p class="fd-eyebrow mx-auto"><?php esc_html_e( 'Ayuda', 'flowdesk' ); ?></p>
 		<h2 class="mt-4 text-2xl sm:text-3xl"><?php esc_html_e( 'Preguntas frecuentes', 'flowdesk' ); ?></h2>
 	</div>
-	<div class="mt-10 fd-panel divide-y divide-metal">
-		<?php foreach ( $faqs as $i => $faq ) : ?>
+	<div class="mt-10 fd-card divide-y divide-line">
+		<?php foreach ( $faqs as $faq ) : ?>
 			<details class="group py-4 px-6">
-				<summary class="flex items-center gap-3 cursor-pointer list-none font-heading text-slate-900">
-					<span class="font-sans text-xs text-amber shrink-0">Q<?php echo esc_html( str_pad( $i + 1, 2, '0', STR_PAD_LEFT ) ); ?></span>
+				<summary class="flex items-center justify-between gap-3 cursor-pointer list-none font-heading text-ink-900">
 					<span class="flex-1"><?php echo esc_html( $faq['q'] ); ?></span>
-					<span class="ml-4 shrink-0 transition-transform group-open:rotate-45 text-amber font-sans" aria-hidden="true">+</span>
+					<span class="shrink-0 transition-transform group-open:rotate-45 text-brand-700" aria-hidden="true">+</span>
 				</summary>
-				<p class="mt-3 pl-8 font-sans text-sm text-slate-600"><?php echo esc_html( $faq['a'] ); ?></p>
+				<p class="mt-3 text-sm text-ink-600"><?php echo esc_html( $faq['a'] ); ?></p>
 			</details>
 		<?php endforeach; ?>
 	</div>
