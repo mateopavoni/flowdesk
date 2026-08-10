@@ -8,7 +8,7 @@ get_header();
 <article class="container-fd py-16 max-w-3xl">
 	<?php while ( have_posts() ) : the_post(); ?>
 		<h1 class="text-3xl mb-6"><?php the_title(); ?></h1>
-		<div class="prose max-w-none">
+		<div class="prose max-w-none font-sans">
 			<?php the_content(); ?>
 		</div>
 

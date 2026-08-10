@@ -8,7 +8,7 @@ if ( post_password_required() ) {
 ?>
 <div id="comments" class="comments-area">
 	<?php if ( have_comments() ) : ?>
-		<h2 class="text-lg font-heading font-semibold mb-6">
+		<p class="fd-nameplate mb-4">
 			<?php
 			printf(
 				/* translators: %d: cantidad de comentarios */
@@ -16,8 +16,8 @@ if ( post_password_required() ) {
 				(int) get_comments_number()
 			);
 			?>
-		</h2>
-		<ol class="space-y-6">
+		</p>
+		<ol class="space-y-6 font-sans text-sm">
 			<?php
 			wp_list_comments( array(
 				'style'      => 'ol',
@@ -31,17 +31,18 @@ if ( post_password_required() ) {
 	<?php if ( comments_open() ) : ?>
 		<?php
 		comment_form( array(
-			'class_submit'      => 'btn bg-blue-900 text-white hover:bg-blue-800',
+			'class_submit'      => 'btn-primary',
 			'title_reply'       => __( 'Dejá tu comentario', 'flowdesk' ),
 			// Default de WP es <h3>. Forzado a <h2> porque, sin comentarios
 			// todavía, este es el próximo heading después del <h1> del post
 			// — un <h3> ahí salta un nivel (violación real de heading-order
 			// detectada con axe-core).
-			'title_reply_before' => '<h2 id="reply-title" class="text-lg font-heading font-semibold mb-6">',
+			'title_reply_before' => '<h2 id="reply-title" class="text-lg mb-6">',
 			'title_reply_after'  => '</h2>',
+			'comment_field'      => '<p class="comment-form-comment"><label for="comment" class="sr-only">' . __( 'Comentario', 'flowdesk' ) . '</label><textarea id="comment" name="comment" rows="6" required class="w-full bg-anthracite border border-metal px-3 py-2 font-sans text-sm text-slate-800"></textarea></p>',
 		) );
 		?>
 	<?php else : ?>
-		<p class="text-sm text-slate-500"><?php esc_html_e( 'Los comentarios están cerrados para este post.', 'flowdesk' ); ?></p>
+		<p class="font-sans text-sm text-slate-500"><?php esc_html_e( 'Los comentarios están cerrados para este post.', 'flowdesk' ); ?></p>
 	<?php endif; ?>
 </div>
