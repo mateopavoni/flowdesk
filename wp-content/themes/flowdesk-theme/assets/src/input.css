@@ -3,148 +3,61 @@
 @tailwind utilities;
 
 /**
- * Sistema visual "Torre de control analógica" — ver ARCHITECTURE.md.
- * Fósforo ámbar monocromo sobre metal, nunca negro puro ni neón. Los
- * componentes de acá abajo (panel/led/switch/teletype/dial/hazard) son la
- * identidad del theme: se reusan en landing, blog y plugin, no se redefinen
- * por sección.
+ * Sistema visual "Ink & Paper" — ver ARCHITECTURE.md.
+ * Fondo blanco cálido, azul de marca como color de acción, un único
+ * acento cálido usado con moderación. Dirección de color/tipografía, no
+ * una metáfora temática con componentes propios en cada sección.
  */
 
 @layer base {
   body {
-    @apply font-sans text-slate-800 antialiased bg-anthracite;
-    /* Metal cepillado (líneas finísimas) + viñeta muy leve, como mirar a
-       través del visor de la consola. Nada de patrón obvio. */
-    background-image:
-      repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.015) 0px, transparent 1px, transparent 3px),
-      radial-gradient(ellipse at 50% 0%, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.45) 100%);
-    background-attachment: fixed;
+    @apply font-sans text-ink-600 antialiased bg-paper;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading font-normal text-slate-900 uppercase tracking-wide;
+    @apply font-heading font-semibold text-ink-900;
   }
   a {
-    @apply text-blue-700 hover:text-blue-900 underline-offset-4;
+    @apply text-brand-700 hover:text-brand-900 underline-offset-4;
   }
-  /* Scanline de CRT sutilísima sobre bloques de datos ámbar (fd-teletype,
-     fd-readout) — se aplica ahí puntualmente, no global, para que no lea
-     como un filtro Instagram encima de todo. */
+  :focus-visible {
+    outline: 2px solid theme('colors.brand.700');
+    outline-offset: 2px;
+  }
 }
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center px-6 py-3 font-heading uppercase tracking-wide text-sm transition-colors border border-transparent;
-    /* Esquinas achaflanadas, no redondeadas: hardware real, no cápsula de
-       Material Design. */
-    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+    @apply inline-flex items-center justify-center rounded-lg px-6 py-3 font-heading font-semibold transition-colors border border-transparent;
   }
   .btn-primary {
-    @apply btn bg-amber text-anthracite border-amber hover:bg-hazard;
+    @apply btn bg-brand-700 text-white hover:bg-brand-900;
   }
   .btn-outline {
-    @apply btn border-2 border-slate-800 text-slate-800 hover:bg-slate-800 hover:text-anthracite;
+    @apply btn border-2 border-brand-700 text-brand-700 hover:bg-brand-100;
   }
   .flowdesk-gradient {
-    /* Antes era el degradé de marca (azul-900 a azul-500). Ahora: metal de
-       chasis, nunca una superficie ámbar grande — el ámbar es acento, no
-       fondo. */
-    @apply bg-gradient-to-br from-anthracite to-metal;
+    @apply bg-gradient-to-br from-brand-900 to-brand-700;
   }
   .container-fd {
     @apply mx-auto max-w-6xl px-4 sm:px-6 lg:px-8;
   }
 
-  /* Panel de instrumento: metal + 4 remaches en las esquinas (puro CSS,
-     sin marcado extra) + textura de chapa cepillada. */
-  .fd-panel {
-    @apply relative border border-metal bg-panel;
-    background-image:
-      repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0px, transparent 1px, transparent 3px),
-      radial-gradient(circle at 11px 11px, rgba(216, 207, 192, 0.35) 1.4px, transparent 1.4px),
-      radial-gradient(circle at calc(100% - 11px) 11px, rgba(216, 207, 192, 0.35) 1.4px, transparent 1.4px),
-      radial-gradient(circle at 11px calc(100% - 11px), rgba(216, 207, 192, 0.35) 1.4px, transparent 1.4px),
-      radial-gradient(circle at calc(100% - 11px) calc(100% - 11px), rgba(216, 207, 192, 0.35) 1.4px, transparent 1.4px);
+  /* Card simple: borde hairline + sombra leve, sin textura ni remaches. */
+  .fd-card {
+    @apply border border-line bg-white rounded-xl shadow-sm;
   }
 
-  /* Placa grabada tipo nameplate de equipo. */
-  .fd-nameplate {
-    @apply inline-block bg-metal text-slate-700 text-xs font-heading uppercase tracking-widest px-2.5 py-1 border border-slate-100/30;
+  /* Label pequeño de sección (reemplaza la "placa" anterior). */
+  .fd-eyebrow {
+    @apply inline-block text-xs uppercase tracking-wide text-brand-700 font-semibold;
   }
 
-  /* LED piloto de estado. */
-  .fd-led {
-    @apply inline-block w-2.5 h-2.5 rounded-full bg-slate-500/30 border border-slate-500 shrink-0;
-  }
-  .fd-led.is-on {
-    @apply bg-amber border-amber;
-    box-shadow: 0 0 6px 1px rgba(255, 176, 0, 0.65);
-  }
-  .fd-led.is-alert {
-    @apply bg-hazard border-hazard;
-    animation: fd-blink 1.1s steps(2, start) infinite;
-  }
-  .fd-led.is-done {
-    @apply bg-green-700 border-green-700;
-    box-shadow: 0 0 5px 1px rgba(127, 191, 63, 0.5);
-  }
-  @keyframes fd-blink {
-    to { opacity: 0.2; }
-  }
-
-  /* Interruptor de palanca (checkbox real por debajo, accesible). */
-  .fd-switch-track {
-    @apply relative inline-flex w-9 h-16 border border-metal bg-anthracite items-start justify-center p-1 cursor-pointer shrink-0;
-  }
-  .fd-switch-lever {
-    @apply w-full h-7 bg-slate-300 border border-slate-500 transition-transform duration-150;
-  }
-  .fd-switch-input:checked ~ .fd-switch-lever {
-    @apply bg-amber border-amber translate-y-7;
-  }
-  .fd-switch-input:focus-visible ~ .fd-switch-lever {
-    outline: 2px solid var(--fd-focus, #ffb000);
-    outline-offset: 2px;
-  }
-
-  /* Cinta de teletipo: tira con perforaciones a los costados. */
-  .fd-teletype {
-    @apply relative bg-anthracite border border-metal font-sans text-xs sm:text-sm text-amber px-6 py-4 leading-relaxed overflow-hidden;
-    background-image:
-      repeating-radial-gradient(circle at 10px 0, rgba(216, 207, 192, 0.25) 0 1.5px, transparent 1.5px 14px),
-      repeating-radial-gradient(circle at calc(100% - 10px) 0, rgba(216, 207, 192, 0.25) 0 1.5px, transparent 1.5px 14px);
-  }
-  .fd-teletype::after {
-    /* Scanline sutil, solo acá. */
-    content: '';
-    @apply pointer-events-none absolute inset-0;
-    background: repeating-linear-gradient(180deg, rgba(0, 0, 0, 0.12) 0px, transparent 1px, transparent 3px);
-  }
-
-  /* Franja de peligro (urgente/atención) — nunca rojo neón. */
-  .fd-hazard-edge {
-    @apply h-2;
-    background-image: repeating-linear-gradient(45deg, var(--fd-hazard, #e8a400), var(--fd-hazard, #e8a400) 10px, var(--fd-anthracite, #1c1b18) 10px, var(--fd-anthracite, #1c1b18) 20px);
-  }
-
-  /* Tabs de navegación como botones físicos de módulo (no texto subrayado). */
+  /* Nav: subrayado en hover/activo, sin estética de botón físico. */
   .fd-navtabs li a {
-    @apply block px-3 py-2 border border-transparent text-slate-600 no-underline hover:text-amber hover:border-metal transition-colors;
+    @apply block px-3 py-2 border-b-2 border-transparent text-ink-600 no-underline hover:text-brand-700 hover:border-brand-700 transition-colors;
   }
   .fd-navtabs li a[aria-current="page"],
   .fd-navtabs li.current-menu-item a {
-    @apply text-amber border-metal bg-panel;
-  }
-
-  /* Conector tipo patch-cord entre unidades relacionadas (vertical). */
-  .fd-patchline {
-    @apply relative pl-5;
-  }
-  .fd-patchline::before {
-    content: '';
-    @apply absolute left-1.5 top-2 bottom-2 w-px bg-amber/40;
-  }
-  .fd-patchline::after {
-    content: '';
-    @apply absolute left-0 top-2 w-3 h-3 rounded-full border-2 border-amber bg-anthracite;
+    @apply text-brand-700 border-brand-700;
   }
 }

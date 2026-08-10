@@ -96,38 +96,10 @@ function flowdesk_related_posts( $post_id = null, $count = 3 ) {
 }
 
 /**
- * Dial analógico (SVG inline): semicírculo graduado + aguja. Decorativo,
- * motivo de firma del concepto "torre de control" — se usa en el hero.
- * $percent 0-100. Sin JS: la rotación de la aguja se calcula en PHP y se
- * escribe como transform inline, un solo render, nada que animar en cliente.
- */
-function flowdesk_gauge( $percent, $label ) {
-	$percent = max( 0, min( 100, (int) $percent ) );
-	// Escala de -90deg (0%) a +90deg (100%) sobre un semicírculo.
-	$angle = -90 + ( $percent / 100 ) * 180;
-	ob_start();
-	?>
-	<div class="flex flex-col items-center gap-2">
-		<svg width="88" height="56" viewBox="0 0 88 56" aria-hidden="true">
-			<path d="M8 48 A36 36 0 0 1 80 48" fill="none" stroke="#3A3833" stroke-width="3" stroke-linecap="round" />
-			<path d="M8 48 A36 36 0 0 1 80 48" fill="none" stroke="#FFB000" stroke-width="3" stroke-linecap="round"
-				stroke-dasharray="113" stroke-dashoffset="<?php echo esc_attr( 113 - ( $percent / 100 ) * 113 ); ?>" opacity="0.55" />
-			<g transform="rotate(<?php echo esc_attr( $angle ); ?> 44 48)">
-				<line x1="44" y1="48" x2="44" y2="18" stroke="#FFB000" stroke-width="2" stroke-linecap="round" />
-			</g>
-			<circle cx="44" cy="48" r="3.5" fill="#D8CFC0" />
-		</svg>
-		<span class="fd-nameplate"><?php echo esc_html( $label ); ?></span>
-	</div>
-	<?php
-	return ob_get_clean();
-}
-
-/**
  * Menú por default si todavía no se configuró uno en wp-admin (fallback de wp_nav_menu).
  */
 function flowdesk_default_menu() {
-	echo '<ul class="fd-navtabs flex flex-col md:flex-row items-center gap-1 text-xs font-heading uppercase tracking-wide">';
+	echo '<ul class="fd-navtabs flex flex-col md:flex-row items-center gap-1 text-sm font-medium">';
 	echo '<li><a href="' . esc_url( home_url( '/#features' ) ) . '">' . esc_html__( 'Producto', 'flowdesk' ) . '</a></li>';
 	echo '<li><a href="' . esc_url( home_url( '/#pricing' ) ) . '">' . esc_html__( 'Precios', 'flowdesk' ) . '</a></li>';
 	echo '<li><a href="' . esc_url( get_post_type_archive_link( 'post' ) ?: home_url( '/blog' ) ) . '">' . esc_html__( 'Blog', 'flowdesk' ) . '</a></li>';
