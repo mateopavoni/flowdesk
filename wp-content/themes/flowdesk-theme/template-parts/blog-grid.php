@@ -20,9 +20,8 @@
 		?>
 	</div>
 <?php else : ?>
-	<div class="fd-panel text-center py-16 px-6">
-		<p class="font-sans text-sm text-amber">&gt; <?php esc_html_e( 'query returned 0 results', 'flowdesk' ); ?></p>
-		<p class="mt-2 text-base text-slate-600 font-sans">
+	<div class="fd-card text-center py-16 px-6">
+		<p class="text-base text-ink-600">
 			<?php esc_html_e( 'No encontramos posts para esta búsqueda.', 'flowdesk' ); ?>
 		</p>
 		<a href="<?php echo esc_url( home_url( '/blog' ) ); ?>" class="btn-primary mt-6">

@@ -6,9 +6,9 @@ get_header();
 ?>
 <div class="container-fd py-16">
 	<div class="text-center max-w-2xl mx-auto mb-10">
-		<p class="fd-nameplate mx-auto"><?php esc_html_e( 'Filtered log', 'flowdesk' ); ?></p>
+		<p class="fd-eyebrow mx-auto"><?php esc_html_e( 'Categoría', 'flowdesk' ); ?></p>
 		<h1 class="mt-4 text-3xl sm:text-4xl"><?php the_archive_title(); ?></h1>
-		<?php the_archive_description( '<p class="mt-3 font-sans text-sm text-slate-600">', '</p>' ); ?>
+		<?php the_archive_description( '<p class="mt-3 text-sm text-ink-400">', '</p>' ); ?>
 	</div>
 
 	<div class="mb-10">

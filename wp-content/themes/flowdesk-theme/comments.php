@@ -8,7 +8,7 @@ if ( post_password_required() ) {
 ?>
 <div id="comments" class="comments-area">
 	<?php if ( have_comments() ) : ?>
-		<p class="fd-nameplate mb-4">
+		<p class="fd-eyebrow mb-4">
 			<?php
 			printf(
 				/* translators: %d: cantidad de comentarios */
@@ -17,7 +17,7 @@ if ( post_password_required() ) {
 			);
 			?>
 		</p>
-		<ol class="space-y-6 font-sans text-sm">
+		<ol class="space-y-6 text-sm">
 			<?php
 			wp_list_comments( array(
 				'style'      => 'ol',
@@ -39,7 +39,7 @@ if ( post_password_required() ) {
 			// detectada con axe-core).
 			'title_reply_before' => '<h2 id="reply-title" class="text-lg mb-6">',
 			'title_reply_after'  => '</h2>',
-			'comment_field'      => '<p class="comment-form-comment"><label for="comment" class="sr-only">' . __( 'Comentario', 'flowdesk' ) . '</label><textarea id="comment" name="comment" rows="6" required class="w-full bg-anthracite border border-metal px-3 py-2 font-sans text-sm text-slate-800"></textarea></p>',
+			'comment_field'      => '<p class="comment-form-comment"><label for="comment" class="sr-only">' . __( 'Comentario', 'flowdesk' ) . '</label><textarea id="comment" name="comment" rows="6" required class="w-full bg-white border border-line rounded-lg px-3 py-2 text-sm text-ink-900"></textarea></p>',
 		) );
 		?>
 	<?php else : ?>
