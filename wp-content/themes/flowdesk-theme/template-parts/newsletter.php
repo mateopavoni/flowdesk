@@ -5,7 +5,7 @@
  */
 ?>
 <section class="container-fd py-20">
-	<div class="fd-card p-8 sm:p-12 text-center max-w-2xl mx-auto">
+	<div class="fd-card p-8 sm:p-12 text-center max-w-2xl mx-auto fd-reveal">
 		<p class="fd-eyebrow mx-auto"><?php esc_html_e( 'Newsletter', 'flowdesk' ); ?></p>
 		<h2 class="mt-4 text-xl sm:text-2xl"><?php esc_html_e( 'Un tip de productividad por mes', 'flowdesk' ); ?></h2>
 		<p class="mt-3 text-sm text-ink-400"><?php esc_html_e( 'Sin spam, sin vueltas. Cancelás cuando quieras.', 'flowdesk' ); ?></p>

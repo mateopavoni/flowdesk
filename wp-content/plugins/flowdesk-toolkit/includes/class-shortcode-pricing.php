@@ -70,7 +70,7 @@ class Flowdesk_Shortcode_Pricing {
 		?>
 		<div class="grid gap-6 md:grid-cols-3 items-start">
 			<?php foreach ( $this->plans() as $plan ) : ?>
-				<div class="fd-card p-6 sm:p-8 <?php echo $plan['highlight'] ? 'border-2 border-brand-700' : ''; ?>">
+				<div class="fd-card p-6 sm:p-8 fd-reveal <?php echo $plan['highlight'] ? 'border-2 border-brand-700' : ''; ?>">
 					<div class="flex items-center justify-between">
 						<p class="fd-eyebrow"><?php echo esc_html( $plan['name'] ); ?></p>
 						<?php if ( $plan['highlight'] ) : ?>

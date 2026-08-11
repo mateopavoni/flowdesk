@@ -22,16 +22,16 @@ $faqs = array(
 );
 ?>
 <section id="faq" class="container-fd py-20 max-w-3xl">
-	<div class="text-center">
+	<div class="text-center fd-reveal">
 		<p class="fd-eyebrow mx-auto"><?php esc_html_e( 'Ayuda', 'flowdesk' ); ?></p>
 		<h2 class="mt-4 text-2xl sm:text-3xl"><?php esc_html_e( 'Preguntas frecuentes', 'flowdesk' ); ?></h2>
 	</div>
-	<div class="mt-10 fd-card divide-y divide-line">
+	<div class="mt-10 fd-card divide-y divide-line fd-reveal">
 		<?php foreach ( $faqs as $faq ) : ?>
-			<details class="group py-4 px-6">
+			<details class="group py-5 sm:py-6 px-6">
 				<summary class="flex items-center justify-between gap-3 cursor-pointer list-none font-heading text-ink-900">
 					<span class="flex-1"><?php echo esc_html( $faq['q'] ); ?></span>
-					<span class="shrink-0 transition-transform group-open:rotate-45 text-brand-700" aria-hidden="true">+</span>
+					<span class="shrink-0 transition-transform group-open:rotate-45 text-brand-700" aria-hidden="true"><?php echo flowdesk_icon( 'plus', 'w-4 h-4' ); ?></span>
 				</summary>
 				<p class="mt-3 text-sm text-ink-600"><?php echo esc_html( $faq['a'] ); ?></p>
 			</details>

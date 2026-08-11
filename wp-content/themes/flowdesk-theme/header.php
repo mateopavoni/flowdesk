@@ -32,7 +32,8 @@
 
 		<button type="button" id="fd-nav-toggle" class="md:hidden p-2 border border-line text-ink-900" aria-expanded="false" aria-controls="fd-nav-menu">
 			<span class="sr-only"><?php esc_html_e( 'Abrir menú', 'flowdesk' ); ?></span>
-			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+			<span data-fd-icon-open><?php echo flowdesk_icon( 'menu' ); ?></span>
+			<span data-fd-icon-close class="hidden"><?php echo flowdesk_icon( 'x' ); ?></span>
 		</button>
 
 		<div id="fd-nav-menu" class="hidden md:flex items-center gap-1">

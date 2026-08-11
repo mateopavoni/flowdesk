@@ -8,7 +8,7 @@ if ( empty( $categories ) ) {
 	return;
 }
 ?>
-<nav class="flex flex-wrap gap-1.5 text-xs" aria-label="<?php esc_attr_e( 'Filtrar por categoría', 'flowdesk' ); ?>">
+<nav class="flex flex-wrap gap-1.5 text-xs fd-reveal" aria-label="<?php esc_attr_e( 'Filtrar por categoría', 'flowdesk' ); ?>">
 	<a
 		href="<?php echo esc_url( home_url( '/blog' ) ); ?>"
 		class="px-3 py-1.5 rounded-full border uppercase tracking-wide <?php echo ! is_category() ? 'bg-brand-700 text-white border-brand-700' : 'border-line text-ink-600 hover:border-brand-500 hover:text-brand-700'; ?>"

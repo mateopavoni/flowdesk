@@ -5,7 +5,7 @@
  */
 $category = get_the_category();
 ?>
-<article class="fd-card group overflow-hidden hover:border-brand-500 transition-colors">
+<article class="fd-card group overflow-hidden hover:border-brand-500 transition-colors fd-reveal">
 	<a href="<?php the_permalink(); ?>" class="block no-underline">
 		<div class="aspect-[16/9] bg-paper-100 overflow-hidden border-b border-line">
 			<?php if ( has_post_thumbnail() ) : ?>

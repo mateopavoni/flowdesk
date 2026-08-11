@@ -20,7 +20,7 @@
 		?>
 	</div>
 <?php else : ?>
-	<div class="fd-card text-center py-16 px-6">
+	<div class="fd-card text-center py-16 px-6 fd-reveal">
 		<p class="text-base text-ink-600">
 			<?php esc_html_e( 'No encontramos posts para esta búsqueda.', 'flowdesk' ); ?>
 		</p>

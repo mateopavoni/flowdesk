@@ -9,10 +9,16 @@
 	// --- Nav mobile toggle -------------------------------------------------
 	var toggle = document.getElementById( 'fd-nav-toggle' );
 	var menu = document.getElementById( 'fd-nav-menu' );
+	var iconOpen = toggle && toggle.querySelector( '[data-fd-icon-open]' );
+	var iconClose = toggle && toggle.querySelector( '[data-fd-icon-close]' );
 	if ( toggle && menu ) {
 		toggle.addEventListener( 'click', function () {
 			var isOpen = menu.classList.toggle( 'hidden' ) === false;
 			toggle.setAttribute( 'aria-expanded', isOpen ? 'true' : 'false' );
+			if ( iconOpen && iconClose ) {
+				iconOpen.classList.toggle( 'hidden', isOpen );
+				iconClose.classList.toggle( 'hidden', ! isOpen );
+			}
 		} );
 	}
 

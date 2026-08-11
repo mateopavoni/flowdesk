@@ -4,7 +4,7 @@
  * manejado por el plugin (nonce + honeypot + sanitización).
  */
 ?>
-<div class="mt-12 fd-card p-6 sm:p-8">
+<div class="mt-12 fd-card p-6 sm:p-8 fd-reveal">
 	<p class="fd-eyebrow mb-4"><?php esc_html_e( 'Contacto', 'flowdesk' ); ?></p>
 	<h2 class="text-xl sm:text-2xl mb-6"><?php esc_html_e( 'Escribinos', 'flowdesk' ); ?></h2>
 	<form id="fd-contact-form" novalidate>

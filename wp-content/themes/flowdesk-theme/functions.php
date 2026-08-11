@@ -57,6 +57,14 @@ function flowdesk_enqueue_assets() {
 		'ajaxUrl' => esc_url_raw( admin_url( 'admin-post.php' ) ),
 	) );
 
+	wp_enqueue_script(
+		'flowdesk-reveal',
+		FLOWDESK_THEME_URI . '/assets/js/reveal.js',
+		array(),
+		FLOWDESK_THEME_VERSION,
+		true
+	);
+
 	if ( is_singular() ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
@@ -108,3 +116,4 @@ function flowdesk_default_menu() {
 }
 
 require FLOWDESK_THEME_DIR . '/inc/seo.php';
+require FLOWDESK_THEME_DIR . '/inc/icons.php';

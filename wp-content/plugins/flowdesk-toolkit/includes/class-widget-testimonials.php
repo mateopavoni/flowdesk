@@ -35,7 +35,7 @@ class Flowdesk_Testimonials_Widget extends WP_Widget {
 
 		echo $args['before_widget'] ?? '';
 		?>
-		<div class="relative" data-fd-carousel>
+		<div class="relative fd-reveal" data-fd-carousel>
 			<div
 				class="flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 -mx-4 px-4 [scrollbar-width:none]"
 				data-fd-carousel-track
