@@ -2,9 +2,7 @@
 /**
  * Widget de testimonios: query dinámica al CPT "testimonial", renderiza un
  * carrusel CSS scroll-snap (los botones prev/next los mueve main.js del tema,
- * ver [data-fd-carousel] — sin librería de slider). Presentado como una fila
- * de "transmisiones entrantes" (patch-bay), no un carrusel de avatares
- * genérico.
+ * ver [data-fd-carousel] — sin librería de slider).
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -46,33 +44,27 @@ class Flowdesk_Testimonials_Widget extends WP_Widget {
 				aria-label="<?php esc_attr_e( 'Testimonios de clientes, desplazable', 'flowdesk' ); ?>"
 			>
 				<?php
-				$i = 0;
 				while ( $query->have_posts() ) :
 					$query->the_post();
-					$i++;
 					$role    = get_post_meta( get_the_ID(), Flowdesk_CPT_Testimonials::META_ROLE, true );
 					$company = get_post_meta( get_the_ID(), Flowdesk_CPT_Testimonials::META_COMPANY, true );
 					?>
 					<figure
-						class="fd-panel snap-start shrink-0 w-[85%] sm:w-[45%] lg:w-[31%] p-6 font-sans"
+						class="fd-card snap-start shrink-0 w-[85%] sm:w-[45%] lg:w-[31%] p-6"
 						data-fd-carousel-item
 					>
-						<div class="flex items-center justify-between mb-4">
-							<span class="font-sans text-[10px] text-slate-500 tracking-widest">TX-<?php echo esc_html( str_pad( $i, 3, '0', STR_PAD_LEFT ) ); ?></span>
-							<span class="fd-led is-on"></span>
-						</div>
-						<blockquote class="text-slate-800 text-sm leading-relaxed">
+						<blockquote class="text-ink-900 text-sm leading-relaxed">
 							<p>&ldquo;<?php echo esc_html( wp_strip_all_tags( get_the_content() ) ); ?>&rdquo;</p>
 						</blockquote>
-						<figcaption class="mt-4 pt-4 border-t border-metal flex items-center gap-3">
+						<figcaption class="mt-4 pt-4 border-t border-line flex items-center gap-3">
 							<?php if ( has_post_thumbnail() ) : ?>
-								<?php the_post_thumbnail( 'thumbnail', array( 'class' => 'w-9 h-9 object-cover border border-metal grayscale' ) ); ?>
+								<?php the_post_thumbnail( 'thumbnail', array( 'class' => 'w-9 h-9 rounded-full object-cover' ) ); ?>
 							<?php else : ?>
-								<span class="w-9 h-9 flowdesk-gradient border border-metal"></span>
+								<span class="w-9 h-9 rounded-full flowdesk-gradient"></span>
 							<?php endif; ?>
 							<span class="text-xs">
-								<span class="block font-heading text-slate-900 tracking-wide"><?php the_title(); ?></span>
-								<span class="block text-slate-500">
+								<span class="block font-heading font-semibold text-ink-900"><?php the_title(); ?></span>
+								<span class="block text-ink-400">
 									<?php echo esc_html( trim( implode( ' · ', array_filter( array( $role, $company ) ) ) ) ); ?>
 								</span>
 							</span>
@@ -82,8 +74,8 @@ class Flowdesk_Testimonials_Widget extends WP_Widget {
 			</div>
 
 			<div class="flex justify-center gap-2 mt-3">
-				<button type="button" data-fd-carousel-prev class="w-9 h-9 border border-metal text-slate-600 hover:border-amber hover:text-amber font-sans" aria-label="<?php esc_attr_e( 'Testimonio anterior', 'flowdesk' ); ?>">&lsaquo;</button>
-				<button type="button" data-fd-carousel-next class="w-9 h-9 border border-metal text-slate-600 hover:border-amber hover:text-amber font-sans" aria-label="<?php esc_attr_e( 'Siguiente testimonio', 'flowdesk' ); ?>">&rsaquo;</button>
+				<button type="button" data-fd-carousel-prev class="w-9 h-9 rounded-full border border-line text-ink-600 hover:border-brand-700 hover:text-brand-700" aria-label="<?php esc_attr_e( 'Testimonio anterior', 'flowdesk' ); ?>">&lsaquo;</button>
+				<button type="button" data-fd-carousel-next class="w-9 h-9 rounded-full border border-line text-ink-600 hover:border-brand-700 hover:text-brand-700" aria-label="<?php esc_attr_e( 'Siguiente testimonio', 'flowdesk' ); ?>">&rsaquo;</button>
 			</div>
 		</div>
 		<?php
