@@ -11,14 +11,14 @@ if ( empty( $categories ) ) {
 <nav class="flex flex-wrap gap-1.5 text-xs fd-reveal" aria-label="<?php esc_attr_e( 'Filtrar por categoría', 'flowdesk' ); ?>">
 	<a
 		href="<?php echo esc_url( home_url( '/blog' ) ); ?>"
-		class="px-3 py-1.5 rounded-full border uppercase tracking-wide <?php echo ! is_category() ? 'bg-brand-700 text-white border-brand-700' : 'border-line text-ink-600 hover:border-brand-500 hover:text-brand-700'; ?>"
+		class="px-3 py-1.5 rounded-full border uppercase tracking-wide <?php echo ! is_category() ? 'bg-violet text-white border-violet' : 'border-panel/60 text-haze hover:border-violet/60 hover:text-violet'; ?>"
 	>
 		<?php esc_html_e( 'Todas', 'flowdesk' ); ?>
 	</a>
 	<?php foreach ( $categories as $cat ) : ?>
 		<a
 			href="<?php echo esc_url( get_category_link( $cat ) ); ?>"
-			class="px-3 py-1.5 rounded-full border uppercase tracking-wide <?php echo is_category( $cat->term_id ) ? 'bg-brand-700 text-white border-brand-700' : 'border-line text-ink-600 hover:border-brand-500 hover:text-brand-700'; ?>"
+			class="px-3 py-1.5 rounded-full border uppercase tracking-wide <?php echo is_category( $cat->term_id ) ? 'bg-violet text-white border-violet' : 'border-panel/60 text-haze hover:border-violet/60 hover:text-violet'; ?>"
 		>
 			<?php echo esc_html( $cat->name ); ?>
 		</a>

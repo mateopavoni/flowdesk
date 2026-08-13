@@ -11,7 +11,7 @@ get_header();
 		printf(
 			/* translators: %s: término buscado */
 			esc_html__( 'Resultados para "%s"', 'flowdesk' ),
-			'<span class="text-brand-700">' . esc_html( get_search_query() ) . '</span>'
+			'<span class="text-violet">' . esc_html( get_search_query() ) . '</span>'
 		);
 		?>
 	</h1>

@@ -14,18 +14,18 @@
 
 		<div class="grid gap-4 sm:grid-cols-2">
 			<div>
-				<label for="fd-contact-name" class="block text-xs uppercase tracking-wide text-ink-400 mb-1"><?php esc_html_e( 'Nombre', 'flowdesk' ); ?></label>
-				<input type="text" id="fd-contact-name" name="name" required class="w-full bg-white border border-line rounded-lg px-3 py-2 text-sm text-ink-900" />
+				<label for="fd-contact-name" class="block text-xs uppercase tracking-wide text-haze mb-1"><?php esc_html_e( 'Nombre', 'flowdesk' ); ?></label>
+				<input type="text" id="fd-contact-name" name="name" required class="w-full bg-panel/40 border border-panel/60 rounded-lg px-3 py-2 text-sm text-bone" />
 			</div>
 			<div>
-				<label for="fd-contact-email" class="block text-xs uppercase tracking-wide text-ink-400 mb-1"><?php esc_html_e( 'Email', 'flowdesk' ); ?></label>
-				<input type="email" id="fd-contact-email" name="email" required class="w-full bg-white border border-line rounded-lg px-3 py-2 text-sm text-ink-900" />
+				<label for="fd-contact-email" class="block text-xs uppercase tracking-wide text-haze mb-1"><?php esc_html_e( 'Email', 'flowdesk' ); ?></label>
+				<input type="email" id="fd-contact-email" name="email" required class="w-full bg-panel/40 border border-panel/60 rounded-lg px-3 py-2 text-sm text-bone" />
 			</div>
 		</div>
 
 		<div class="mt-4">
-			<label for="fd-contact-message" class="block text-xs uppercase tracking-wide text-ink-400 mb-1"><?php esc_html_e( 'Mensaje', 'flowdesk' ); ?></label>
-			<textarea id="fd-contact-message" name="message" rows="5" required class="w-full bg-white border border-line rounded-lg px-3 py-2 text-sm text-ink-900"></textarea>
+			<label for="fd-contact-message" class="block text-xs uppercase tracking-wide text-haze mb-1"><?php esc_html_e( 'Mensaje', 'flowdesk' ); ?></label>
+			<textarea id="fd-contact-message" name="message" rows="5" required class="w-full bg-panel/40 border border-panel/60 rounded-lg px-3 py-2 text-sm text-bone"></textarea>
 		</div>
 
 		<button type="submit" class="btn-primary mt-6">

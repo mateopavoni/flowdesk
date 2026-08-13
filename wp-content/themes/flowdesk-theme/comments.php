@@ -39,7 +39,7 @@ if ( post_password_required() ) {
 			// detectada con axe-core).
 			'title_reply_before' => '<h2 id="reply-title" class="text-lg mb-6">',
 			'title_reply_after'  => '</h2>',
-			'comment_field'      => '<p class="comment-form-comment"><label for="comment" class="sr-only">' . __( 'Comentario', 'flowdesk' ) . '</label><textarea id="comment" name="comment" rows="6" required class="w-full bg-white border border-line rounded-lg px-3 py-2 text-sm text-ink-900"></textarea></p>',
+			'comment_field'      => '<p class="comment-form-comment"><label for="comment" class="sr-only">' . __( 'Comentario', 'flowdesk' ) . '</label><textarea id="comment" name="comment" rows="6" required class="w-full bg-panel/40 border border-panel/60 rounded-lg px-3 py-2 text-sm text-bone"></textarea></p>',
 		) );
 		?>
 	<?php else : ?>

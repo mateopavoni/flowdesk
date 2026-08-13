@@ -9,7 +9,7 @@ get_header();
 	<div class="text-center max-w-2xl mx-auto mb-10">
 		<p class="fd-eyebrow mx-auto"><?php esc_html_e( 'Recursos', 'flowdesk' ); ?></p>
 		<h1 class="mt-4 text-3xl sm:text-4xl"><?php esc_html_e( 'Blog', 'flowdesk' ); ?></h1>
-		<p class="mt-3 text-sm text-ink-400">
+		<p class="mt-3 text-sm text-haze">
 			<?php esc_html_e( 'Productividad, gestión de equipos y notas sobre cómo construimos FlowDesk.', 'flowdesk' ); ?>
 		</p>
 	</div>
@@ -23,7 +23,7 @@ get_header();
 				id="fd-blog-search"
 				name="s"
 				placeholder="<?php esc_attr_e( 'Buscar…', 'flowdesk' ); ?>"
-				class="bg-white border border-line rounded-lg px-3 py-2 text-sm text-ink-900 placeholder:text-ink-400"
+				class="bg-panel/40 border border-panel/60 rounded-lg px-3 py-2 text-sm text-bone placeholder:text-haze"
 			/>
 		</form>
 	</div>

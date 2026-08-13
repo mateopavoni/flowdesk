@@ -21,7 +21,7 @@
 	</div>
 <?php else : ?>
 	<div class="fd-card text-center py-16 px-6 fd-reveal">
-		<p class="text-base text-ink-600">
+		<p class="text-base text-haze">
 			<?php esc_html_e( 'No encontramos posts para esta búsqueda.', 'flowdesk' ); ?>
 		</p>
 		<a href="<?php echo esc_url( home_url( '/blog' ) ); ?>" class="btn-primary mt-6">
