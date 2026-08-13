@@ -68,6 +68,16 @@ function flowdesk_enqueue_assets() {
 	if ( is_singular() ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+
+	if ( is_single() ) {
+		wp_enqueue_script(
+			'flowdesk-progress',
+			FLOWDESK_THEME_URI . '/assets/js/progress.js',
+			array(),
+			FLOWDESK_THEME_VERSION,
+			true
+		);
+	}
 }
 add_action( 'wp_enqueue_scripts', 'flowdesk_enqueue_assets' );
 
@@ -113,6 +123,30 @@ function flowdesk_default_menu() {
 	echo '<li><a href="' . esc_url( get_post_type_archive_link( 'post' ) ?: home_url( '/blog' ) ) . '">' . esc_html__( 'Blog', 'flowdesk' ) . '</a></li>';
 	echo '<li><a href="' . esc_url( home_url( '/#faq' ) ) . '">' . esc_html__( 'FAQ', 'flowdesk' ) . '</a></li>';
 	echo '</ul>';
+}
+
+/**
+ * Imagen de placeholder cuando el post/case study no tiene featured image.
+ * Foto real y estable (Picsum, seed determinístico — mismo post, misma
+ * imagen siempre), no un mock generado; el tono violeta de marca se aplica
+ * en el template vía overlay CSS, no acá.
+ */
+function flowdesk_placeholder_image( $seed, $width = 800, $height = 450 ) {
+	return sprintf( 'https://picsum.photos/seed/flowdesk-%s/%d/%d', rawurlencode( (string) $seed ), $width, $height );
+}
+
+/**
+ * Avatar de placeholder (iniciales sobre violeta) para testimonios sin foto
+ * real — UI Avatars, servicio estable, sin dependencia nueva.
+ */
+function flowdesk_avatar_placeholder( $name, $size = 96 ) {
+	return 'https://ui-avatars.com/api/?' . http_build_query( array(
+		'name'       => $name,
+		'background' => '7B6FE8',
+		'color'      => 'fff',
+		'bold'       => 'true',
+		'size'       => $size,
+	) );
 }
 
 require FLOWDESK_THEME_DIR . '/inc/seo.php';

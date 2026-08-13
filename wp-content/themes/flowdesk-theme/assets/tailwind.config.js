@@ -11,38 +11,28 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        // Fraunces (serif con carácter propio, sentence case) para
-        // headings; Public Sans (humanista, diseñada para legibilidad de
-        // UI en tamaños chicos) para el cuerpo. Se mantienen las claves
-        // 'sans'/'heading' que ya usa cada template.
-        sans: ['"Public Sans"', 'ui-sans-serif', 'system-ui'],
-        heading: ['"Fraunces"', 'serif'],
+        // Bricolage Grotesque (display geométrica) para headings; DM Sans
+        // para el cuerpo. Se mantienen las claves 'sans'/'heading' que ya
+        // usa cada template — solo cambia qué tipografía cargan.
+        sans: ['"DM Sans"', 'ui-sans-serif', 'system-ui'],
+        heading: ['"Bricolage Grotesque"', 'ui-sans-serif', 'system-ui'],
       },
       colors: {
-        // Paleta propia "Ink & Paper": azul de marca + blanco cálido.
-        // A propósito NO pisa blue/slate/red/green default de Tailwind
-        // (eso fue lo que causó el bug real de bg-slate-50 renderizando
-        // casi negro en el rediseño anterior) — tokens con nombre propio,
-        // los defaults de Tailwind se comportan normal en todo el theme.
-        brand: {
-          100: '#E7ECFB',
-          500: '#6C87E8',
-          700: '#2451D6',
-          900: '#16213E',
-        },
-        paper: {
-          DEFAULT: '#FAF8F3',
-          100: '#F1ECE1',
-        },
-        ink: {
-          400: '#8892A0',
-          600: '#4B5768',
-          900: '#1A2233',
-        },
-        line: '#E1DAC9',
-        // Único acento cálido, uso puntual (badges), nunca como texto de
-        // cuerpo: contraste insuficiente sobre paper para eso.
-        accent: '#DD6B4C',
+        // Paleta "Violet Hour" (reemplaza "Ink & Paper", ver commit-plan.md):
+        // dark SaaS, acento violeta + amarillo. Nombres propios a propósito
+        // — NI pisan defaults de Tailwind (mismo criterio que Ink & Paper)
+        // NI reusan los nombres del export de UX Pilot (ink/slate), que
+        // hubieran colisionado con 'slate' default y con el 'ink' viejo
+        // (mismo nombre, valores opuestos: texto oscuro vs. fondo oscuro).
+        void:   '#1A1B2E', // fondo base
+        panel:  '#2D2F4A', // superficies/cards/nav; también borde vía /60 (border-panel/60)
+        bone:   '#F0EDFF', // texto principal sobre fondo oscuro
+        haze:   '#B8B4D4', // texto secundario/mutado
+        violet: '#7B6FE8', // acento primario — CTAs, links, glow
+        amber:  '#E8D56F', // acento secundario — badges, eyebrows, detalles puntuales
+      },
+      boxShadow: {
+        glow: '0 8px 30px -8px rgba(123, 111, 232, 0.45)',
       },
     },
   },

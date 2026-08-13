@@ -3,24 +3,25 @@
 @tailwind utilities;
 
 /**
- * Sistema visual "Ink & Paper" — ver ARCHITECTURE.md.
- * Fondo blanco cálido, azul de marca como color de acción, un único
- * acento cálido usado con moderación. Dirección de color/tipografía, no
- * una metáfora temática con componentes propios en cada sección.
+ * Sistema visual "Violet Hour" — ver ARCHITECTURE.md.
+ * Reemplaza "Ink & Paper": dark SaaS premium (fondo casi negro-azulado,
+ * violeta como color de acción, amarillo como único acento secundario).
+ * Dirección de color/tipografía, no una metáfora temática con componentes
+ * propios en cada sección — mismo criterio que la ronda anterior.
  */
 
 @layer base {
   body {
-    @apply font-sans text-ink-600 antialiased bg-paper;
+    @apply font-sans text-haze antialiased bg-void;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading font-semibold text-ink-900;
+    @apply font-heading font-semibold text-bone;
   }
   a {
-    @apply text-brand-700 hover:text-brand-900 underline-offset-4;
+    @apply text-violet hover:text-[#9A90F0] underline-offset-4;
   }
   :focus-visible {
-    outline: 2px solid theme('colors.brand.700');
+    outline: 2px solid theme('colors.violet');
     outline-offset: 2px;
   }
 }
@@ -30,34 +31,36 @@
     @apply inline-flex items-center justify-center rounded-lg px-6 py-3 font-heading font-semibold transition border border-transparent active:scale-[0.97];
   }
   .btn-primary {
-    @apply btn bg-brand-700 text-white hover:bg-brand-900;
+    @apply btn bg-violet text-white hover:bg-[#6A5FD6] hover:shadow-glow;
   }
   .btn-outline {
-    @apply btn border-2 border-brand-700 text-brand-700 hover:bg-brand-100;
+    @apply btn border-2 border-violet text-violet hover:bg-violet/10;
   }
   .flowdesk-gradient {
-    @apply bg-gradient-to-br from-brand-900 to-brand-700;
+    @apply bg-gradient-to-br from-void to-violet/20;
   }
   .container-fd {
     @apply mx-auto max-w-6xl px-4 sm:px-6 lg:px-8;
   }
 
-  /* Card simple: borde hairline + sombra leve, sin textura ni remaches. */
+  /* Card: superficie 'panel' sobre 'void', borde translúcido en vez de
+     hairline sólido — es lo que da el efecto "glass" del export sin
+     necesitar un token nuevo (border-panel/60). */
   .fd-card {
-    @apply border border-line bg-white rounded-xl shadow-sm;
+    @apply border border-panel/60 bg-panel rounded-xl shadow-sm;
   }
   .fd-card-hover {
-    @apply fd-card transition duration-300 hover:-translate-y-1 hover:shadow-md;
+    @apply fd-card transition duration-300 hover:-translate-y-1 hover:shadow-glow;
   }
 
-  /* Label pequeño de sección (reemplaza la "placa" anterior). Punto en accent:
-     unico uso de ese color que aparece en TODAS las secciones del sitio. */
+  /* Label pequeño de sección. Punto en amber: único uso de ese color que
+     aparece en TODAS las secciones del sitio. */
   .fd-eyebrow {
-    @apply inline-flex items-center gap-1.5 text-xs uppercase tracking-wide text-brand-700 font-semibold;
+    @apply inline-flex items-center gap-1.5 text-xs uppercase tracking-wide text-amber font-semibold;
   }
   .fd-eyebrow::before {
     content: '';
-    @apply inline-block w-1.5 h-1.5 rounded-full bg-accent;
+    @apply inline-block w-1.5 h-1.5 rounded-full bg-amber;
   }
 
   /* Scroll-reveal: fade + rise sutil, con stagger via nth-child para grids. */
@@ -76,12 +79,40 @@
     .fd-card-hover { @apply transition-none; }
   }
 
+  /* Prose simple para cuerpo de case study/posts largos. No hay plugin
+     @tailwindcss/typography instalado (el sitio no lo necesitaba hasta
+     ahora) — se define a mano en vez de sumar una dependencia nueva. */
+  .fd-prose {
+    @apply text-haze leading-relaxed;
+  }
+  .fd-prose > * + * {
+    @apply mt-5;
+  }
+  .fd-prose h2, .fd-prose h3 {
+    @apply mt-10 mb-2;
+  }
+  .fd-prose blockquote {
+    @apply border-l-2 border-violet pl-5 italic text-bone;
+  }
+
+  /* Barra de progreso de lectura (post/case study) — ver assets/js/progress.js. */
+  .fd-progress {
+    @apply fixed top-0 inset-x-0 h-1 bg-panel/40 z-50;
+  }
+  .fd-progress-bar {
+    @apply h-full bg-violet transition-[width] duration-150 ease-out;
+    width: 0%;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .fd-progress-bar { @apply transition-none; }
+  }
+
   /* Nav: subrayado en hover/activo, sin estética de botón físico. */
   .fd-navtabs li a {
-    @apply block px-3 py-2 border-b-2 border-transparent text-ink-600 no-underline hover:text-brand-700 hover:border-brand-700 transition-colors;
+    @apply block px-3 py-2 border-b-2 border-transparent text-haze no-underline hover:text-violet hover:border-violet transition-colors;
   }
   .fd-navtabs li a[aria-current="page"],
   .fd-navtabs li.current-menu-item a {
-    @apply text-brand-700 border-brand-700;
+    @apply text-violet border-violet;
   }
 }
