@@ -25,7 +25,7 @@ $features = array(
 	),
 );
 ?>
-<section id="features" class="bg-paper-100 py-20 border-y border-line">
+<section id="features" class="bg-panel/30 py-20 border-y border-panel/60">
 	<div class="container-fd">
 		<div class="text-center max-w-2xl mx-auto">
 			<p class="fd-eyebrow mx-auto"><?php esc_html_e( 'Producto', 'flowdesk' ); ?></p>
@@ -36,11 +36,11 @@ $features = array(
 		<div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
 			<?php foreach ( $features as $feature ) : ?>
 				<div class="fd-card-hover p-6 sm:p-8 fd-reveal">
-					<span class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-brand-100 text-brand-700">
+					<span class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-violet/10 text-violet">
 						<?php echo flowdesk_icon( $feature['icon'] ); ?>
 					</span>
 					<h3 class="mt-4 text-base"><?php echo esc_html( $feature['title'] ); ?></h3>
-					<p class="mt-2 text-sm text-ink-600"><?php echo esc_html( $feature['desc'] ); ?></p>
+					<p class="mt-2 text-sm text-haze"><?php echo esc_html( $feature['desc'] ); ?></p>
 				</div>
 			<?php endforeach; ?>
 		</div>

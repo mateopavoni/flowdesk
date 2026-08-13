@@ -12,7 +12,7 @@ $youtube_id = apply_filters( 'flowdesk_demo_video_id', 'dQw4w9WgXcQ' );
 	</div>
 	<div class="fd-card p-3 max-w-3xl mx-auto fd-reveal">
 		<div
-			class="relative aspect-video overflow-hidden bg-paper-100 rounded-lg cursor-pointer group"
+			class="relative aspect-video overflow-hidden bg-panel/50 rounded-lg cursor-pointer group"
 			data-fd-video-facade
 			data-video-id="<?php echo esc_attr( $youtube_id ); ?>"
 			role="button"
@@ -26,7 +26,7 @@ $youtube_id = apply_filters( 'flowdesk_demo_video_id', 'dQw4w9WgXcQ' );
 				class="w-full h-full object-cover group-hover:opacity-90 transition-opacity"
 			/>
 			<span class="absolute inset-0 flex items-center justify-center">
-				<span class="w-16 h-16 rounded-full bg-brand-700 group-hover:bg-brand-900 flex items-center justify-center transition-colors">
+				<span class="w-16 h-16 rounded-full bg-violet group-hover:bg-[#6A5FD6] group-hover:shadow-glow flex items-center justify-center transition-colors">
 					<?php echo flowdesk_icon( 'play', 'w-[26px] h-[26px] text-white ml-1' ); ?>
 				</span>
 			</span>

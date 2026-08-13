@@ -18,7 +18,7 @@ get_header();
 	<?php echo do_shortcode( '[flowdesk_pricing]' ); ?>
 </section>
 
-<section id="testimonios" class="bg-paper-100 py-20 border-y border-line">
+<section id="testimonios" class="bg-panel/40 py-20 border-y border-panel/60">
 	<div class="container-fd">
 		<div class="text-center max-w-2xl mx-auto mb-14">
 			<p class="fd-eyebrow mx-auto"><?php esc_html_e( 'Testimonios', 'flowdesk' ); ?></p>
