@@ -70,21 +70,21 @@ class Flowdesk_Shortcode_Pricing {
 		?>
 		<div class="grid gap-6 md:grid-cols-3 items-start">
 			<?php foreach ( $this->plans() as $plan ) : ?>
-				<div class="fd-card p-6 sm:p-8 fd-reveal <?php echo $plan['highlight'] ? 'border-2 border-brand-700' : ''; ?>">
+				<div class="fd-card p-6 sm:p-8 fd-reveal <?php echo $plan['highlight'] ? 'border-2 border-violet' : ''; ?>">
 					<div class="flex items-center justify-between">
 						<p class="fd-eyebrow"><?php echo esc_html( $plan['name'] ); ?></p>
 						<?php if ( $plan['highlight'] ) : ?>
-							<span class="text-xs font-heading font-semibold text-brand-700"><?php esc_html_e( 'Recomendado', 'flowdesk' ); ?></span>
+							<span class="text-xs font-heading font-semibold text-violet"><?php esc_html_e( 'Recomendado', 'flowdesk' ); ?></span>
 						<?php endif; ?>
 					</div>
 					<p class="mt-5">
-						<span class="text-3xl sm:text-4xl font-heading font-semibold text-ink-900">$<?php echo esc_html( $plan['price'] ); ?></span>
-						<span class="text-xs text-ink-400"><?php echo esc_html( $plan['period'] ); ?></span>
+						<span class="text-3xl sm:text-4xl font-heading font-semibold text-bone">$<?php echo esc_html( $plan['price'] ); ?></span>
+						<span class="text-xs text-haze"><?php echo esc_html( $plan['period'] ); ?></span>
 					</p>
-					<ul class="mt-6 space-y-3 text-sm border-t border-line pt-6">
+					<ul class="mt-6 space-y-3 text-sm border-t border-panel/60 pt-6">
 						<?php foreach ( $plan['features'] as $feature ) : ?>
 							<li class="flex items-center gap-2.5">
-								<span class="w-1.5 h-1.5 rounded-full shrink-0 bg-brand-700" aria-hidden="true"></span>
+								<span class="w-1.5 h-1.5 rounded-full shrink-0 bg-violet" aria-hidden="true"></span>
 								<?php echo esc_html( $feature ); ?>
 							</li>
 						<?php endforeach; ?>

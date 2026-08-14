@@ -53,18 +53,18 @@ class Flowdesk_Testimonials_Widget extends WP_Widget {
 						class="fd-card snap-start shrink-0 w-[85%] sm:w-[45%] lg:w-[31%] p-6"
 						data-fd-carousel-item
 					>
-						<blockquote class="text-ink-900 text-sm leading-relaxed">
+						<blockquote class="text-bone text-sm leading-relaxed">
 							<p>&ldquo;<?php echo esc_html( wp_strip_all_tags( get_the_content() ) ); ?>&rdquo;</p>
 						</blockquote>
-						<figcaption class="mt-4 pt-4 border-t border-line flex items-center gap-3">
+						<figcaption class="mt-4 pt-4 border-t border-panel/60 flex items-center gap-3">
 							<?php if ( has_post_thumbnail() ) : ?>
 								<?php the_post_thumbnail( 'thumbnail', array( 'class' => 'w-9 h-9 rounded-full object-cover' ) ); ?>
 							<?php else : ?>
-								<span class="w-9 h-9 rounded-full flowdesk-gradient"></span>
+								<img src="<?php echo esc_url( flowdesk_avatar_placeholder( get_the_title() ) ); ?>" alt="" loading="lazy" class="w-9 h-9 rounded-full object-cover" />
 							<?php endif; ?>
 							<span class="text-xs">
-								<span class="block font-heading font-semibold text-ink-900"><?php the_title(); ?></span>
-								<span class="block text-ink-400">
+								<span class="block font-heading font-semibold text-bone"><?php the_title(); ?></span>
+								<span class="block text-haze">
 									<?php echo esc_html( trim( implode( ' · ', array_filter( array( $role, $company ) ) ) ) ); ?>
 								</span>
 							</span>
@@ -74,8 +74,8 @@ class Flowdesk_Testimonials_Widget extends WP_Widget {
 			</div>
 
 			<div class="flex justify-center gap-2 mt-3">
-				<button type="button" data-fd-carousel-prev class="w-9 h-9 rounded-full border border-line text-ink-600 hover:border-brand-700 hover:text-brand-700" aria-label="<?php esc_attr_e( 'Testimonio anterior', 'flowdesk' ); ?>">&lsaquo;</button>
-				<button type="button" data-fd-carousel-next class="w-9 h-9 rounded-full border border-line text-ink-600 hover:border-brand-700 hover:text-brand-700" aria-label="<?php esc_attr_e( 'Siguiente testimonio', 'flowdesk' ); ?>">&rsaquo;</button>
+				<button type="button" data-fd-carousel-prev class="w-9 h-9 rounded-full border border-panel/60 text-haze hover:border-violet hover:text-violet" aria-label="<?php esc_attr_e( 'Testimonio anterior', 'flowdesk' ); ?>">&lsaquo;</button>
+				<button type="button" data-fd-carousel-next class="w-9 h-9 rounded-full border border-panel/60 text-haze hover:border-violet hover:text-violet" aria-label="<?php esc_attr_e( 'Siguiente testimonio', 'flowdesk' ); ?>">&rsaquo;</button>
 			</div>
 		</div>
 		<?php
