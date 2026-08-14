@@ -17,6 +17,7 @@ wp-content/
 │   ├── inc/seo.php              ← meta/OG/JSON-LD propio
 │   ├── front-page.php + template-parts/*   ← landing (hero, features, video, FAQ, newsletter)
 │   ├── home.php / archive.php / single.php ← blog
+│   ├── single-case_study.php    ← case study individual (CPT `case_study`)
 │   └── assets/{src,dist}        ← Tailwind (src/input.css → dist/main.css) + js/main.js
 └── plugins/flowdesk-toolkit/    ← lógica: CPTs, REST, forms, seguridad
     ├── flowdesk-toolkit.php     ← bootstrap, activation hook, rate-limit compartido
@@ -33,6 +34,25 @@ wp-content/
 Separación deliberada: el tema no sabe de lógica de negocio (CPTs, REST, seguridad), el plugin no sabe
 de presentación (HTML/Tailwind). Si mañana cambia el tema, el plugin sigue funcionando igual — y
 viceversa, es el mismo motivo por el que WordPress separa tema y plugin en primer lugar.
+
+## Sistema de diseño
+
+El sitio pasó por dos rediseños completos de dirección visual, documentados como decisiones
+tomadas (no como indecisión): "torre de control" (fósforo ámbar/metal) → **"Ink & Paper"**
+(editorial claro, papel crema + azul de marca + Fraunces/Public Sans) → **"Violet Hour"**
+(actual: dark SaaS premium, fondo casi negro-azulado + acento violeta/amarillo + Bricolage
+Grotesque/DM Sans), a partir de un export de UX Pilot que Mateo trajo como dirección de arte.
+
+En los tres casos, mismo criterio para los tokens de color en `tailwind.config.js`: nombres
+propios (`void`/`panel`/`bone`/`haze`/`violet`/`amber` en la versión actual) que nunca pisan
+los defaults de Tailwind (`slate`/`blue`/`red`/`green`, etc.) — eso fue justo lo que rompió la
+primera ronda (`bg-slate-50` renderizando casi negro). Cambiar de sistema es reemplazar valores
+hex en un solo archivo + `input.css`, no tocar cada template — la separación entre "qué color
+tiene la marca" y "qué estructura tiene cada sección" ya estaba puesta desde la primera ronda.
+
+Font Awesome (CDN) se sumó recién en la migración a Violet Hour para los iconos que trae el
+export de UX Pilot — el sistema propio de SVGs en `inc/icons.php` sigue existiendo y en uso
+(nav, features, FAQ, video) para lo que ya cubría.
 
 ## Decisiones de diseño
 
@@ -113,7 +133,9 @@ acá; el resto de los browsers queda documentado en `playwright.config.js` para 
 ## Qué no se hizo (y por qué)
 
 - **Dark mode**: opcional en el brief, se dejó afuera — un tema custom desde cero ya cubre el objetivo
-  de mostrar trabajo real sin duplicar cada componente en dos paletas.
+  de mostrar trabajo real sin duplicar cada componente en dos paletas. Que el sistema "Violet Hour"
+  actual sea de fondo oscuro es una elección de dirección de arte (un único tema, sin toggle), no
+  la implementación del dark mode opcional del brief.
 - **Bootstrap + Tailwind**: el brief original pedía los dos frameworks. Se resolvió con uno solo
   (Tailwind) — dos librerías de CSS resolviendo el mismo problema no se defiende en una entrevista, y la
   decisión de simplificar está documentada en `.claude/CLAUDE.md`.
